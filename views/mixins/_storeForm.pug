@@ -1,0 +1,13 @@
+mixin storeForm(store = {})
+ form(action='/add' method="POST" class='card')
+  label(for='name') Name
+  input(type='text' name='name' id='name')
+  label(for='description') Description
+  textarea(name='description' id='description' )
+  - const choises = ['Wifi', 'Open Late', 'Family Friendly', 'Vegeterian', 'Licensed'];
+  ul.tags
+    each choise in choises 
+      .tag.tag__choice  
+        input(type='checkbox' id=choise value=choise name='tags')
+        label(for=choise) #{choise}
+  input(type='submit' value='save->' class='button')      
