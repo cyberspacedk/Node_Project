@@ -44,7 +44,7 @@ exports.register = async (req,res, next) => {
 
   await register(user, req.body.password); 
 
-  res.send('vcvvcv');
+  res.send('it works');
   
   next();
 

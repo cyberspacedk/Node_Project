@@ -39,10 +39,12 @@ const storeSchema = new mongoose.Schema({
 })
 
 storeSchema.pre('save', async function(next){
+
   if(!this.isModified('name')){
     next();
     return ;
   }
+  
   this.slug = slug(this.name);
   const slugRegEx = new RegExp(`^(${this.slug})((-[0-9]*$)?)$`, 'i');
   const storesWithSlugs = await this.constructor.find({slug:slugRegEx});
